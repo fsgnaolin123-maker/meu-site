@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicologia Online | Acolhimento e Cuidado com a Saúde Mental</title>
+<meta name="description" content="Terapia online com psicólogo: ansiedade, depressão, autoestima, relacionamentos, luto, burnout e mais. Agende sua primeira conversa.">
+<style>
+  :root {
+    --verde: #3f7d6e;
+    --verde-escuro: #2c5a4f;
+    --verde-claro: #e8f2ef;
+    --creme: #faf7f2;
+    --texto: #26332f;
+    --cinza: #5f6f6a;
+    --branco: #ffffff;
+    --raio: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    color: var(--texto);
+    background: var(--creme);
+    line-height: 1.65;
+  }
+  a { color: inherit; text-decoration: none; }
+  .container { width: min(1100px, 92%); margin: 0 auto; }
+  section { padding: 72px 0; }
+  h1, h2, h3 { line-height: 1.25; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 12px; color: var(--verde-escuro); }
+  .sub { color: var(--cinza); max-width: 640px; margin-bottom: 40px; }
+  .centro { text-align: center; }
+  .centro .sub { margin-left: auto; margin-right: auto; }
+
+  /* Cabeçalho */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(250,247,242,.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e6e0d6;
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+  .logo { font-weight: 700; font-size: 1.2rem; color: var(--verde-escuro); }
+  .logo span { color: var(--verde); }
+  nav ul { display: flex; gap: 26px; list-style: none; }
+  nav a { font-size: .95rem; color: var(--cinza); transition: color .2s; }
+  nav a:hover { color: var(--verde); }
+
+  .btn {
+    display: inline-block; padding: 14px 28px; border-radius: 999px;
+    background: var(--verde); color: var(--branco); font-weight: 600;
+    border: 2px solid var(--verde); cursor: pointer; font-size: 1rem;
+    transition: transform .2s, background .2s;
+  }
+  .btn:hover { background: var(--verde-escuro); border-color: var(--verde-escuro); transform: translateY(-2px); }
+  .btn.outline { background: transparent; color: var(--verde); }
+  .btn.outline:hover { background: var(--verde); color: var(--branco); }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, var(--verde-claro), var(--creme)); padding: 90px 0; }
+  .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
+  .hero h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); color: var(--verde-escuro); margin-bottom: 18px; }
+  .hero p { font-size: 1.1rem; color: var(--cinza); margin-bottom: 28px; }
+  .hero-botoes { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-card {
+    background: var(--branco); border-radius: 24px; padding: 32px;
+    box-shadow: 0 20px 50px rgba(44,90,79,.12);
+  }
+  .hero-card ul { list-style: none; }
+  .hero-card li { padding: 10px 0 10px 32px; position: relative; border-bottom: 1px solid #eef1ef; }
+  .hero-card li:last-child { border: none; }
+  .hero-card li::before { content: "✓"; position: absolute; left: 0; color: var(--verde); font-weight: 700; }
+
+  /* Temas */
+  .grid-temas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; }
+  .card {
+    background: var(--branco); border-radius: var(--raio); padding: 28px;
+    border: 1px solid #eee8dd; transition: transform .25s, box-shadow .25s;
+  }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 14px 30px rgba(44,90,79,.1); }
+  .card .icone { font-size: 2rem; margin-bottom: 12px; }
+  .card h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--verde-escuro); }
+  .card p { font-size: .95rem; color: var(--cinza); }
+
+  /* Como funciona */
+  .fundo-claro { background: var(--verde-claro); }
+  .passos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+  .passo { text-align: center; padding: 10px; }
+  .numero {
+    width: 56px; height: 56px; border-radius: 50%; background: var(--verde);
+    color: var(--branco); font-size: 1.4rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;
+  }
+  .passo h3 { margin-bottom: 6px; color: var(--verde-escuro); }
+  .passo p { color: var(--cinza); font-size: .95rem; }
+
+  /* Vantagens */
+  .vantagens { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .vantagem { display: flex; gap: 14px; align-items: flex-start; }
+  .vantagem .bolinha {
+    flex: 0 0 44px; height: 44px; border-radius: 12px; background: var(--verde-claro);
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+  }
+  .vantagem h3 { font-size: 1.05rem; color: var(--verde-escuro); }
+  .vantagem p { font-size: .92rem; color: var(--cinza); }
+
+  /* Sobre */
+  .sobre-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: center; }
+  .foto {
+    aspect-ratio: 4/5; border-radius: 24px;
+    background: linear-gradient(160deg, var(--verde), var(--verde-escuro));
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.85); font-size: .95rem; text-align: center; padding: 20px;
+  }
+  .sobre p { margin-bottom: 14px; color: var(--cinza); }
+  .selo { display: inline-block; background: var(--verde-claro); color: var(--verde-escuro);
+    padding: 6px 14px; border-radius: 999px; font-size: .85rem; font-weight: 600; margin-bottom: 14px; }
+
+  /* FAQ */
+  .faq { max-width: 760px; margin: 0 auto; }
+  details {
+    background: var(--branco); border: 1px solid #eee8dd; border-radius: 12px;
+    padding: 18px 22px; margin-bottom: 12px;
+  }
+  summary { cursor: pointer; font-weight: 600; color: var(--verde-escuro); list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  summary::after { content: "+"; font-size: 1.4rem; color: var(--verde); line-height: 1; }
+  details[open] summary::after { content: "−"; }
+  details p { margin-top: 12px; color: var(--cinza); font-size: .97rem; }
+
+  /* Contato */
+  .contato { background: var(--verde-escuro); color: var(--branco); }
+  .contato h2 { color: var(--branco); }
+  .contato .sub { color: rgba(255,255,255,.8); }
+  .contato-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  form { background: var(--branco); border-radius: 20px; padding: 28px; color: var(--texto); }
+  label { display: block; font-size: .9rem; font-weight: 600; margin-bottom: 6px; }
+  input, select, textarea {
+    width: 100%; padding: 12px 14px; border: 1px solid #d9dfdc; border-radius: 10px;
+    font: inherit; margin-bottom: 16px; background: #fcfcfb;
+  }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--verde); border-color: transparent; }
+  textarea { min-height: 100px; resize: vertical; }
+  form .btn { width: 100%; }
+  .info-contato p { margin-bottom: 16px; }
+  .alerta {
+    background: rgba(255,255,255,.12); border-left: 4px solid #ffd27a;
+    padding: 16px 18px; border-radius: 10px; font-size: .95rem; margin-top: 24px;
+  }
+
+  footer { background: #1d3a33; color: rgba(255,255,255,.7); padding: 28px 0; font-size: .85rem; text-align: center; }
+
+  .whats {
+    position: fixed; right: 20px; bottom: 20px; z-index: 20;
+    background: #25d366; color: #fff; padding: 14px 20px; border-radius: 999px;
+    font-weight: 600; box-shadow: 0 8px 20px rgba(0,0,0,.2);
+  }
+
+  @media (max-width: 800px) {
+    nav ul { display: none; }
+    .hero-grid, .sobre-grid, .contato-grid { grid-template-columns: 1fr; }
+    section { padding: 52px 0; }
+    .foto { max-width: 280px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo">Cepre</a>
+    <nav>
+      <ul>
+        <li><a href="#temas">Temas</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#faq">Dúvidas</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a href="#contato" class="btn">Agendar</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <h1>Cuidar da mente é um ato de coragem. Você não precisa fazer isso sozinho(a).</h1>
+        <p>Terapia online com acolhimento, sigilo e profissionalismo, no conforto da sua casa e no seu ritmo.</p>
+        <div class="hero-botoes">
+          <a href="#contato" class="btn">Agendar primeira conversa</a>
+          <a href="#temas" class="btn outline">Ver temas atendidos</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3 style="margin-bottom:14px;color:var(--verde-escuro)">Atendimento online</h3>
+        <ul>
+          <li>Sessões por videochamada</li>
+          <li>Sigilo e ética profissional</li>
+          <li>Horários flexíveis, inclusive à noite</li>
+          <li>Adultos, adolescentes e casais</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMAS -->
+  <section id="temas">
+    <div class="container centro">
+      <h2>Com o que a terapia pode ajudar</h2>
+      <p class="sub">Estes são alguns dos assuntos mais procurados por quem busca um psicólogo online. Se o seu não está na lista, fale comigo mesmo assim.</p>
+      <div class="grid-temas" style="text-align:left">
+        <article class="card"><div class="icone">🌪️</div><h3>Ansiedade</h3><p>Preocupação excessiva, aceleração dos pensamentos, crises de pânico e a sensação constante de estar em alerta.</p></article>
+        <article class="card"><div class="icone">🌧️</div><h3>Depressão e tristeza persistente</h3><p>Falta de energia, desânimo, perda de interesse nas coisas e dificuldade de enxergar sentido no dia a dia.</p></article>
+        <article class="card"><div class="icone">🔥</div><h3>Estresse e Burnout</h3><p>Esgotamento no trabalho, cobrança excessiva, dificuldade de desligar e equilíbrio entre vida pessoal e profissional.</p></article>
+        <article class="card"><div class="icone">🪞</div><h3>Autoestima e autoconhecimento</h3><p>Inseguranças, autocrítica severa, perfeccionismo e a busca por se entender melhor e se relacionar bem consigo.</p></article>
+        <article class="card"><div class="icone">💞</div><h3>Relacionamentos e terapia de casal</h3><p>Conflitos, comunicação difícil, ciúmes, términos, dependência emocional e reconstrução da confiança.</p></article>
+        <article class="card"><div class="icone">🕊️</div><h3>Luto e perdas</h3><p>Acolhimento para a morte de pessoas queridas, fim de ciclos, separações e mudanças difíceis de aceitar.</p></article>
+        <article class="card"><div class="icone">🧩</div><h3>TDAH e neurodiversidade</h3><p>Dificuldade de foco e organização, suspeita de TDAH ou autismo e estratégias para o dia a dia.</p></article>
+        <article class="card"><div class="icone">🌱</div><h3>Fases de transição</h3><p>Mudança de carreira, maternidade e paternidade, imigração, aposentadoria e decisões importantes de vida.</p></article>
+        <article class="card"><div class="icone">👨‍👩‍👧</div><h3>Família e adolescência</h3><p>Orientação a pais, conflitos familiares e apoio a adolescentes que enfrentam angústias e mudanças.</p></article>
+        <article class="card"><div class="icone">😴</div><h3>Insônia e sofrimento emocional</h3><p>Dificuldade para dormir ligada a preocupações, ruminação e sobrecarga emocional.</p></article>
+        <article class="card"><div class="icone">🫂</div><h3>Traumas e experiências difíceis</h3><p>Espaço seguro para elaborar vivências dolorosas, no tempo e no ritmo de cada pessoa.</p></article>
+        <article class="card"><div class="icone">🧭</div><h3>Orientação profissional</h3><p>Insegurança na carreira, medo de falar em público, dificuldade de tomar decisões e lidar com a pressão.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="fundo-claro" id="como-funciona">
+    <div class="container centro">
+      <h2>Como funciona a terapia online</h2>
+      <p class="sub">Um processo simples, do primeiro contato às sessões regulares.</p>
+      <div class="passos">
+        <div class="passo"><div class="numero">1</div><h3>Primeiro contato</h3><p>Você preenche o formulário ou chama no WhatsApp e conta brevemente o que está buscando.</p></div>
+        <div class="passo"><div class="numero">2</div><h3>Conversa inicial</h3><p>Nos conhecemos, esclareço dúvidas e entendemos juntos se o trabalho faz sentido para você.</p></div>
+        <div class="passo"><div class="numero">3</div><h3>Sessões semanais</h3><p>Encontros por videochamada, de cerca de 50 minutos, em horário combinado.</p></div>
+        <div class="passo"><div class="numero">4</div><h3>Acompanhamento</h3><p>Avaliamos seu progresso ao longo do tempo e ajustamos o caminho sempre que necessário.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VANTAGENS -->
+  <section>
+    <div class="container">
+      <h2 class="centro">Por que escolher a terapia online</h2>
+      <p class="sub centro" style="margin-left:auto;margin-right:auto">A eficácia da psicoterapia online é reconhecida, e o formato traz conveniência para a rotina.</p>
+      <div class="vantagens">
+        <div class="vantagem"><div class="bolinha">🏠</div><div><h3>Conforto e privacidade</h3><p>Atendimento do lugar onde você se sente seguro(a).</p></div></div>
+        <div class="vantagem"><div class="bolinha">⏱️</div><div><h3>Economia de tempo</h3><p>Sem deslocamento ou trânsito.</p></div></div>
+        <div class="vantagem"><div class="bolinha">🌎</div><div><h3>Sem barreiras geográficas</h3><p>Atendo brasileiros em qualquer cidade ou país.</p></div></div>
+        <div class="vantagem"><div class="bolinha">📅</div><div><h3>Flexibilidade</h3><p>Mais facilidade para manter a regularidade das sessões.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="fundo-claro" id="sobre">
+    <div class="container sobre-grid">
+      <div class="foto">Espaço para a sua foto profissional</div>
+      <div class="sobre">
+        <span class="selo">Psicólogo(a) • CRP 00/00000</span>
+        <h2>Olá, eu sou [Seu Nome]</h2>
+        <p>Sou psicólogo(a) clínico(a) e atuo com atendimento online para adultos, adolescentes e casais. Minha abordagem é baseada em escuta cuidadosa, respeito à história de cada pessoa e ferramentas com respaldo científico.</p>
+        <p>Acredito que a terapia é um espaço para você se compreender melhor, desenvolver recursos emocionais e construir uma vida mais alinhada com o que realmente importa.</p>
+        <p><strong>Abordagem:</strong> Terapia Cognitivo-Comportamental (edite conforme a sua)<br>
+           <strong>Formação:</strong> [Graduação, pós-graduação e especializações]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="centro">Perguntas frequentes</h2>
+      <p class="sub centro" style="margin-left:auto;margin-right:auto">As dúvidas mais comuns de quem está pensando em começar a terapia.</p>
+      <div class="faq">
+        <details><summary>A terapia online funciona de verdade?</summary><p>Sim. Estudos mostram que a psicoterapia online pode ter resultados comparáveis ao atendimento presencial para diversas demandas, como ansiedade e depressão. O mais importante é a qualidade do vínculo entre paciente e psicólogo.</p></details>
+        <details><summary>A terapia online é regulamentada?</summary><p>Sim. O Conselho Federal de Psicologia (CFP) regulamenta o atendimento psicológico mediado por tecnologia, e o profissional deve ter registro ativo no CRP. Você pode confirmar o registro no cadastro nacional de psicólogos.</p></details>
+        <details><summary>Como sei se preciso de terapia?</summary><p>Se você sente sofrimento emocional que atrapalha seu dia a dia, relacionamentos ou trabalho, ou apenas deseja se conhecer melhor, a terapia pode ajudar. Não é preciso estar em crise para começar.</p></details>
+        <details><summary>Quanto tempo dura cada sessão e com que frequência?</summary><p>As sessões duram cerca de 50 minutos e, em geral, acontecem uma vez por semana. A frequência pode ser ajustada conforme a necessidade.</p></details>
+        <details><summary>Quanto custa a sessão?</summary><p>O valor da sessão é informado na conversa inicial. [Edite aqui seus valores, formas de pagamento e se há reembolso por plano de saúde.]</p></details>
+        <details><summary>O que preciso para fazer a sessão?</summary><p>Um celular, tablet ou computador com internet estável, câmera e microfone, e um local reservado onde você não seja interrompido(a).</p></details>
+        <details><summary>O que é dito na terapia é sigiloso?</summary><p>Sim. O sigilo é um dever ético do psicólogo, previsto no Código de Ética Profissional, e vale também para o atendimento online.</p></details>
+        <details><summary>Psicólogo receita remédio?</summary><p>Não. Psicólogos não prescrevem medicamentos. Quando necessário, encaminho para avaliação com psiquiatra e podemos trabalhar em conjunto.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contato" id="contato">
+    <div class="container contato-grid">
+      <div class="info-contato">
+        <h2>Vamos conversar?</h2>
+        <p class="sub">Dar o primeiro passo pode ser difícil, e está tudo bem. Deixe seus dados e retorno o mais breve possível.</p>
+        <p>📱 WhatsApp: (24) 33542579</p>
+        <p>✉️ E-mail: ceprevfisioterapia@hotmail.com</p>
+        <p>🕐 Atendimento: segunda a sexta, das 8h às 21h</p>
+        <div class="alerta">
+          <strong>Em situação de emergência?</strong> Este site não é um serviço de urgência. Se você ou alguém está em risco, ligue para o <strong>CVV (188)</strong>, disponível 24h, ou para o <strong>SAMU (192)</strong>.
+        </div>
+      </div>
+
+      <form id="form-contato" onsubmit="enviar(event)">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" required placeholder="Seu nome">
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" required placeholder="seu@email.com">
+
+        <label for="telefone">WhatsApp</label>
+        <input type="tel" id="telefone" placeholder="(00) 00000-0000">
+
+        <label for="assunto">O que você busca?</label>
+        <select id="assunto">
+          <option>Ansiedade</option>
+          <option>Depressão / tristeza</option>
+          <option>Estresse / Burnout</option>
+          <option>Autoestima / autoconhecimento</option>
+          <option>Relacionamentos / casal</option>
+          <option>Luto</option>
+          <option>TDAH / neurodiversidade</option>
+          <option>Outro assunto</option>
+        </select>
+
+        <label for="mensagem">Mensagem (opcional)</label>
+        <textarea id="mensagem" placeholder="Se quiser, conte um pouco sobre o que está passando."></textarea>
+
+        <button type="submit" class="btn">Enviar mensagem</button>
+        <p id="retorno" style="margin-top:12px;font-size:.9rem;color:var(--verde);display:none">Obrigado! Entrarei em contato em breve.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<a class="whats" href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20conversa" target="_blank" rel="noopener">💬 WhatsApp</a>
+
+<footer>
+  <div class="container">
+    <p>© <span id="ano"></span>Cepre • Psicólogo Filipe • CRP 00/00000</p>
+    <p style="margin-top:6px">O conteúdo deste site é informativo e não substitui avaliação e acompanhamento psicológico.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('ano').textContent = new Date().getFullYear();
+
+  // Demonstração: para receber as mensagens de verdade, conecte o formulário
+  // a um serviço como Formspree, Netlify Forms ou ao seu back-end.
+  function enviar(e) {
+    e.preventDefault();
+    document.getElementById('retorno').style.display = 'block';
+    e.target.reset();
+  }
+</script>
+</body>
+</html>
